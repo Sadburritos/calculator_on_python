@@ -1,6 +1,5 @@
 from PyQt5.QtWidgets import *
-
-# я перешел на пайчарм может быть чтото будет не так
+from PyQt5.QtCore import *
 
 
 class My_calculator(QWidget):
@@ -14,11 +13,21 @@ class My_calculator(QWidget):
     def buttons(self):
         layout = QVBoxLayout()
 
+
+        button_grid = QGridLayout()
+        buttons = [
+            'Normal', 'Math', 'Acc'
+        ]
+
+
+
+
         self.result_label = QLabel('0')
         layout.addWidget(self.result_label)
 
         button_grid = QGridLayout()
         buttons = [
+            'C', 'AC', '', '',
             '7', '8', '9', '/',
             '4', '5', '6', '*',
             '1', '2', '3', '-',
