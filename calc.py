@@ -1,44 +1,56 @@
 from PyQt5.QtWidgets import *
-
-# я перешел на пайчарм может быть чтото будет не так
-
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
 
 class My_calculator(QWidget):
-    def __init__(self):
-        super().__init__()
-        self.setWindowTitle('Calculator')
-        self.setGeometry(100, 100, 100, 300)
+        def __init__(self):
+            super().__init__()
+            self.setWindowTitle('Calculator')
+            self.setGeometry(100, 100, 300, 400)
 
-        self.buttons()
+            self.buttons()
 
-    def buttons(self):
-        layout = QVBoxLayout()
+        def buttons(self):
+            layout = QVBoxLayout()
 
-        self.result_label = QLabel('0')
-        layout.addWidget(self.result_label)
+            button_mode_layout = QHBoxLayout()
+            normal_button = QPushButton('Normal')
+            math_button = QPushButton('Math')
+            acc_button = QPushButton('Acc')
+            button_mode_layout.addWidget(normal_button)
+            button_mode_layout.addWidget(math_button)
+            button_mode_layout.addWidget(acc_button)
+            layout.addLayout(button_mode_layout)
 
-        button_grid = QGridLayout()
-        buttons = [
-            '7', '8', '9', '/',
-            '4', '5', '6', '*',
-            '1', '2', '3', '-',
-            '0', '.', '=', '+'
-        ]
+            self.result_label = QLabel('0')
+            self.result_label.setAlignment(Qt.AlignRight)
+            # self.result_label.setAlignment(Qt.AlignBottom)
+            self.result_label.setFont(QFont("Times", 32))
+            layout.addWidget(self.result_label)
 
-        row, col = 0, 0
-        for nums in buttons:
-            button = QPushButton(nums)
-            button_grid.addWidget(button, row, col)
+            button_grid = QGridLayout()
 
-            col += 1
-            if col > 3:
-                col = 0
-                row += 1
+            buttons = [
+                'C', 'AC', '', '',
+                '7', '8', '9', '/',
+                '4', '5', '6', '*',
+                '1', '2', '3', '-',
+                '0', '.', '=', '+'
+            ]
 
-        layout.addLayout(button_grid)
+            row, col = 0, 0
+            for nums in buttons:
+                button = QPushButton(nums)
+                button_grid.addWidget(button, row, col)
 
-        self.setLayout(layout)
+                col += 1
+                if col > 3:
+                    col = 0
+                    row += 1
 
+            layout.addLayout(button_grid)
+
+            self.setLayout(layout)
 
 def main():
     app = QApplication([])
@@ -46,6 +58,5 @@ def main():
     calculator.show()
     app.exec_()
 
-
-main()
-
+if __name__ == "__main__":
+    main()
