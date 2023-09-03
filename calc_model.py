@@ -1,3 +1,7 @@
+
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import *
+
 class SimpleCalcModel:
     __display = '2+2*2'
 
@@ -9,25 +13,25 @@ class SimpleCalcModel:
             print("Некоректное выражение")
 
     def command(self, key: str):
-        if key != "=":
+        if key != "=": 
             if key.isdigit():
-                if self.__display == "0":
+                if self.__display == "0": 
                     self.__display = key
-                else:
+                else: 
+                    self.__display += key   
+            else: 
+                if self.__display[-1] not in "+-*/": 
                     self.__display += key
-            else:
-                if self.__display[-1] not in "+-*/":
-                    self.__display += key
-
-            if key == "C":
-                if len(self.__display) > 1:
+            
+            if key == "C": 
+                if len(self.__display) > 1: 
                     self.__display = self.__display[:-1]
 
             if key == "AC":
                 self.__display = "0"
-        else:
-            print(self.__display)
-            self.calculate()
+        else: 
+            print(self.__display) 
+            self.calculate() 
 
     def get_display(self):
         return self.__display
