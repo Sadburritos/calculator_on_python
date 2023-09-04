@@ -77,3 +77,27 @@ class My_calculator(QWidget):
                 # Добавьте текст кнопки к текущему вводу
                 self.current_input += button_text
                 self.result_label.setText(self.current_input)
+
+    def set_model(self,model):
+        self.calc_model = model
+        self.main_display.setText(model.get_display())
+
+
+class AccountCalcViev(SimpleCalcView):
+    def __init__(self):
+        super().__init__()
+        keys_layout = QGridLayout()
+        self.layout().addLayout(keys_layout)
+
+        keys = ('(', ')', '%', '')
+
+        for r in range(len(keys)):
+            key = keys[r]
+            if key:
+                btn = QPushButton(text=key)
+                btn.clicked.connect(self.on_button_pressed)
+                if key != '%':
+                    keys_layout.addWidget(btn, 0, r)
+                else:
+                    keys_layout.addWidget(btn, 0, r, 1, 2)
+

@@ -3,15 +3,26 @@ import sys
 from PyQt5.QtWidgets import QApplication
 from calc_main_window import CalcMainWindow
 from calc_view import My_calculator
+from calc_control import CalcControlWidget
 
 
-
+# def switch_mode(name):
+#     if name == 'Account':
+#         model = AccountCalcModel()
+#         view = AccountCalcView()
+#         view.set_model(model)
+#         window.set_view(view)
 if __name__ == '__main__':
     app = QApplication(sys.argv)
 
 
     window = CalcMainWindow('Calculator')
     view = My_calculator()
+
+    # switch = CalcControlWidget()
+    #switch.switched.connect(switch_mode())
+    # window.set_switcher(switch)
+    # view.set_model(model)
 
     window.set_view(view)
     window.show()
