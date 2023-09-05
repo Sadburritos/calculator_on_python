@@ -10,7 +10,6 @@ class My_calculator(QWidget):
     def __init__(self, title):
         super().__init__()
         self.setStyleSheet("background-color: black;")
-        self.setGeometry(100, 100, 300, 400)
         self.setWindowTitle(title)
 
         self.buttons()
