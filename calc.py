@@ -1,11 +1,13 @@
-import sys
-import os
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
-Button_size = 50
+
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+
 class My_calculator(QWidget):
-    def __init__(self, title=None):
+    def __init__(self, title):
         super().__init__()
         self.setStyleSheet("background-color: black;")
         self.setGeometry(100, 100, 300, 400)
@@ -49,7 +51,7 @@ class My_calculator(QWidget):
             button = QPushButton(nums)
             button_grid.addWidget(button, row, col)
             button.setStyleSheet("background-color : orange")
-            button.setFixedSize(Button_size,Button_size)
+
             col += 1
             if col > 3:
                 col = 0
@@ -59,9 +61,4 @@ class My_calculator(QWidget):
 
         self.setLayout(layout)
 
-os.environ['QT_QPA_PLATFORM_PLUGIN_PATH'] = "venv/Lib/site-packages/PyQt5/Qt5/plugins/platforms"
-app = QApplication([])
-calculator = My_calculator()
-calculator.show()
-app.exec_()
 
