@@ -12,12 +12,14 @@ def switch_mode(name):
     if name == "ACC":
         model = AccountCalcModel()
         view = AccountCalcViev()
+        view.set_model(model)
+        window.set_view(view)
     if name == "Default":
         model = SimpleCalcModel()
         view = SimpleCalcView()
+        view.set_model(model)
+        window.set_view(view)
 
-    view.set_model(model)
-    window.set_view(view)
 
 if __name__ == '__main__':
     os.environ['QT_QPA_PLATFORM_PLUGIN_PATH'] = "venv/Lib/site-packages/PyQt5/Qt5/plugins/platforms"

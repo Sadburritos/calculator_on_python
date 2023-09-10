@@ -68,11 +68,13 @@ class AccountCalcViev(SimpleCalcView):
         self.layout().addLayout(keys_layout)
 
         if keys is None:
-            # Define default keys if not provided
+
             keys = (
                 ('(', '', ')', '%'),
                 ("MS", "MR", "MC", "M+", "M-")
             )
+
+
 
         for r in range(len(keys)):
             for c in range(len(keys[r])):
