@@ -25,6 +25,10 @@ class SimpleCalcModel:
 
             if key == "AC":
                 self._display = "0"
+
+            if self._display == "0":
+                if key == "(" or key == ")":
+                    self._display = self._display - "0"
         else:
             print(self._display)
             self.calculate()

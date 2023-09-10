@@ -58,3 +58,26 @@ class SimpleCalcView(QWidget):
     def set_model(self, model):
         self.calc_model = model
         self.main_display.setText(model.get_display())
+
+
+class AccountCalcViev(SimpleCalcView):
+    def __init__(self):
+        super().__init__()
+        keys_layout = QGridLayout()
+        self.layout().addLayout(keys_layout)
+
+        keys = ('(', '', ')', '%')
+
+        for c in range(len(keys)):
+            key = keys[c]
+            if key:
+                btn = QPushButton(text=key)
+                btn.clicked.connect(self.on_button_pressed)
+                btn.setStyleSheet("background-color : orange")
+                if key != '%':
+                    keys_layout.addWidget(btn, 0, c)
+                else:
+                    keys_layout.addWidget(btn, 0, c, 1, 2)
+
+
+

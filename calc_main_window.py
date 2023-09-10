@@ -23,11 +23,5 @@ class CalcMainWindow(QMainWindow):
         if self.calc_view:
             self.calc_view.set_model(model)
 
-
-
-
-
-'''
     def set_switcher(self, widget):
         self.calc_layout.addWidget(widget, 0, 0)
-'''

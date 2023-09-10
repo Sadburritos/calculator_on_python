@@ -1,3 +1,4 @@
+from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import pyqtSignal
 
@@ -17,11 +18,15 @@ class CalcControlWidget(QWidget):
         main_layout = QVBoxLayout()
         self.setLayout(main_layout)
 
-        radiobutton = QRadioButton(text='Simple')
+        radiobutton = QRadioButton(text='Default')
         radiobutton.setChecked(True)
         radiobutton.toggled.connect(self.calc_mode_switch)
         main_layout.addWidget(radiobutton)
+        radiobutton.setStyleSheet('color: rgb(255, 255, 255)')
+        radiobutton.setFont(QFont("Times", 10))
 
-        radiobutton2 = QRadioButton(text='Account')
+        radiobutton2 = QRadioButton(text='ACC')
         radiobutton2.toggled.connect(self.calc_mode_switch)
         main_layout.addWidget(radiobutton2)
+        radiobutton2.setStyleSheet('color: rgb(255, 255, 255)')
+        radiobutton2.setFont(QFont("Times", 10))
