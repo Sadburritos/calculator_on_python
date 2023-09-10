@@ -3,8 +3,10 @@ from PyQt5.QtWidgets import *
 class CalcMainWindow(QMainWindow):
     calc_view = None
     calc_layout = None
+
     def __init__(self, title):
         super().__init__()
+        self.calc_model = None
         self.setStyleSheet("background-color: black;")
         self.setWindowTitle(title)
         main_widget = QWidget()
