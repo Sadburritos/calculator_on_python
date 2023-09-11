@@ -1,6 +1,5 @@
 import sys
 import os
-from PyQt5.QtWidgets import QApplication
 from calc_main_window import *
 from calc_view import *
 from calc_model import *
@@ -11,11 +10,14 @@ def switch_mode(name):
     global view
     if name == "ACC":
         model = AccountCalcModel()
+        view.hide()
         view = AccountCalcViev()
         view.set_model(model)
         window.set_view(view)
+
     if name == "Default":
         model = SimpleCalcModel()
+        view.hide()
         view = SimpleCalcView()
         view.set_model(model)
         window.set_view(view)

@@ -41,8 +41,8 @@ class AccountCalcModel(SimpleCalcModel):
     def __init__(self):
         super().__init__()
         self.calc_memory = ""
-    def command(self, key: str):
-        calc_memory = ""
+
+    def command(self, key: str, calc_memory=""):
         if self._display == "0":
             if key in "()":
                 if self._display == "0":

@@ -59,7 +59,6 @@ class SimpleCalcView(QWidget):
         self.calc_model = model
         self.main_display.setText(model.get_display())
 
-from PyQt5.QtWidgets import QPushButton, QGridLayout
 
 class AccountCalcViev(SimpleCalcView):
     def __init__(self, keys=None):
@@ -70,7 +69,7 @@ class AccountCalcViev(SimpleCalcView):
         if keys is None:
 
             keys = (
-                ('(', '', ')', '%'),
+                ('(', ')', ' ', '%'),
                 ("MS", "MR", "MC", "M+", "M-")
             )
 
@@ -84,6 +83,9 @@ class AccountCalcViev(SimpleCalcView):
                     btn.clicked.connect(self.on_button_pressed)
                     btn.setStyleSheet("background-color: orange")
                     keys_layout.addWidget(btn, r, c)
+                    if key == '%':
+                        keys_layout.addWidget(btn, r, c, 1, 2)
+
 
 
 
