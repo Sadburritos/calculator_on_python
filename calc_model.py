@@ -20,8 +20,10 @@ class SimpleCalcModel:
                 if self._display[-1] not in "+-*/" and key in "+-*/":
                     self._display += key
             if key == "C":
-                if len(self._display) > 0:
+                if len(self._display) > 1:
                     self._display = self._display[:-1]
+                else:
+                    self._display = "0"
             if key == "AC":
                 self._display = "0"
 
