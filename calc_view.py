@@ -69,7 +69,7 @@ class AccountCalcViev(SimpleCalcView):
         if keys is None:
 
             keys = (
-                ('(', ')', ' ', '%'),
+                ('(', ')', '', '%'),
                 ("MS", "MR", "MC", "M+", "M-")
             )
 

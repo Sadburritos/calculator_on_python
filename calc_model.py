@@ -5,10 +5,13 @@ class SimpleCalcModel:
         try:
             result = eval(self._display)
             self._display = str(result)
+
+
         except SyntaxError:
             print("Некоректное выражение")
 
     def command(self, key: str):
+
         if key != "=":
             if key.isdigit():
                 if self._display == "0":
@@ -21,7 +24,7 @@ class SimpleCalcModel:
 
             if key == "C":
                 if len(self._display) > 0:
-                    self._display = self._display[:-1]
+                    self._display = self._display[:-2]
 
             if key == "AC":
                 self._display = "0"
@@ -32,6 +35,10 @@ class SimpleCalcModel:
         else:
             print(self._display)
             self.calculate()
+
+
+        print(self._display, key)
+
 
     def get_display(self):
         return self._display
@@ -50,6 +57,10 @@ class AccountCalcModel(SimpleCalcModel):
                     self._display += key
                 else:
                     self._display += key
+            else:
+                if self._display == "0":
+                    self._display = ""
+                self._display += key
         elif key == "%":
             last_value_index = max(self._display.rfind("-"),
                                    self._display.rfind("+"),
