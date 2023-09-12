@@ -57,9 +57,6 @@ class AccountCalcModel(SimpleCalcModel):
             res1 = eval(f"{self._display}*{last_value}/100")
             self._display += str(res1)
 
-
-
-
         elif key == "MS":
             self.calc_memory = self._display
         elif key == "MR":
@@ -74,6 +71,7 @@ class AccountCalcModel(SimpleCalcModel):
                 current_value = float(self._display)
                 current_memory = float(self.calc_memory)
                 self.calc_memory = str(current_memory + current_value)
+                self._display = self.calc_memory
             except ValueError:
                 self._display = "Error"
         elif key == "M-":
@@ -81,6 +79,7 @@ class AccountCalcModel(SimpleCalcModel):
                 current_value = float(self._display)
                 current_memory = float(self.calc_memory)
                 self.calc_memory = str(current_memory - current_value)
+                self._display = self.calc_memory
             except ValueError:
                 self._display = "Error"
         else:
@@ -111,13 +110,6 @@ class MathCalcModel(SimpleCalcModel):
             self._display = str(pow(float(self._display), 2))
         elif key == "x^3":
             self._display = str(pow(float(self._display), 3))
-        # elif key == "x^y":
-        #     try:
-        #         base, exponent = map(float, self._display.split('^'))
-        #         result = base ** exponent
-        #         self._display = str(result)
-        #     except ValueError:
-        #         self._display = "Error"
         elif key == "log":
             try:
                 value = float(self._display)
