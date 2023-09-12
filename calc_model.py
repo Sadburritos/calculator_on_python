@@ -1,3 +1,4 @@
+from math import sin, cos, tan, log, sqrt, pow
 class SimpleCalcModel:
     _display = '0'
 
@@ -85,3 +86,62 @@ class AccountCalcModel(SimpleCalcModel):
         else:
             super().command(key)
 
+
+class MathCalcModel(SimpleCalcModel):
+    def __init(self):
+        super().__init__()
+
+    def command(self, key: str):
+        if key in "()":
+            if self._display=="0":
+                self._display=key
+            else:
+                self._display+=key
+        elif key == "Sin":
+            self._display = str(sin(float(self._display)))
+        elif key == "Cos":
+            self._display = str(cos(float(self._display)))
+        elif key == "Tan":
+            self._display = str(tan(float(self._display)))
+        elif key == "ctg":
+            self._display = str(1.0 / tan(float(self._display)))
+        elif key == "sqr":
+            self._display = str(sqrt(float(self._display)))
+        elif key == "x^2":
+            self._display = str(pow(float(self._display), 2))
+        elif key == "x^3":
+            self._display = str(pow(float(self._display), 3))
+        # elif key == "x^y":
+        #     try:
+        #         base, exponent = map(float, self._display.split('^'))
+        #         result = base ** exponent
+        #         self._display = str(result)
+        #     except ValueError:
+        #         self._display = "Error"
+        elif key == "log":
+            try:
+                value = float(self._display)
+                if value > 0:
+                    result = log(value)
+                    self._display = str(result)
+                else:
+                    self._display = "Error: Value must be greater than 0"
+            except ValueError:
+                self._display = "Error: Invalid input"
+
+        else:
+            super().command(key)
+if __name__ == '__main__':
+    print('Testing model:')
+    calc = AccountCalcModel()
+
+    calc.command('3')
+    calc.command('*')
+    calc.command('7')
+    calc.command('+')
+    calc.command('1')
+    calc.command('%')
+    calc.command('')
+    calc.calculate()
+
+    print(calc.get_display())

@@ -30,3 +30,9 @@ class CalcControlWidget(QWidget):
         main_layout.addWidget(radiobutton2)
         radiobutton2.setStyleSheet('color: rgb(255, 255, 255)')
         radiobutton2.setFont(QFont("Times", 10))
+
+        radiobutton3 = QRadioButton(text='MATH')
+        radiobutton3.toggled.connect(self.calc_mode_switch)
+        main_layout.addWidget(radiobutton3)
+        radiobutton3.setStyleSheet('color: rgb(255, 255, 255)')
+        radiobutton3.setFont(QFont("Times", 10))

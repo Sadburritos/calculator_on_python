@@ -8,6 +8,13 @@ from calc_control import *
 
 def switch_mode(name):
     global view
+    if name == "MATH":
+        model = MathCalcModel()
+        view.hide()
+        view = MathCalcView()
+        view.set_model(model)
+        window.set_view(view)
+
     if name == "ACC":
         model = AccountCalcModel()
         view.hide()

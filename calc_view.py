@@ -87,7 +87,26 @@ class AccountCalcViev(SimpleCalcView):
                         keys_layout.addWidget(btn, r, c, 1, 2)
 
 
+class MathCalcView(SimpleCalcView):
 
+    def __init__(self,keys = None):
+        super().__init__()
+        keys_layout = QGridLayout()
+        self.layout().addLayout(keys_layout)
 
+        if keys is None:
+            keys = (
+                ('(', ')', 'log', 'x^2', 'x^3'),
+                ("Sin", "Cos", "Tan", "ctg", "sqr")
+            )
 
-
+        for r in range(len(keys)):
+            for c in range(len(keys[r])):
+                key = keys[r][c]
+                if key:
+                    btn = QPushButton(text=key)
+                    btn.clicked.connect(self.on_button_pressed)
+                    btn.setStyleSheet("background-color: orange")
+                    keys_layout.addWidget(btn, r, c)
+                    if key == '%':
+                        keys_layout.addWidget(btn, r, c, 1, 2)
