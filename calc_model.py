@@ -39,9 +39,10 @@ class AccountCalcModel(SimpleCalcModel):
 
     def command(self, key: str):
         if key in "()":
-            self._display += key
-        if key == "(" and self._display == "0":
-            self._display = ""
+            if self._display=="0":
+                self._display=key
+            else:
+                self._display+=key
         if key == "%":
             last_value_index = max(self._display.rfind("-"),
                                    self._display.rfind("+"),
