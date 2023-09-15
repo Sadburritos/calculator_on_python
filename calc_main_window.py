@@ -7,7 +7,11 @@ class CalcMainWindow(QMainWindow):
     def __init__(self, title):
         super().__init__()
         self.calc_model = None
-        self.setStyleSheet("background-color: black;")
+        f = open("style.css")  # QSS not CSS for pyqt5
+        stylesheet = f.read()
+        self.setStyleSheet(stylesheet)
+        f.close()
+        #self.setStyleSheet("background-color: black;")
         self.setWindowTitle(title)
         main_widget = QWidget()
         self.calc_layout = QGridLayout()
