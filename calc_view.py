@@ -16,8 +16,12 @@ class SimpleCalcView(QWidget):
 
     def keyPressEvent(self, event):
         key_text = event.text()
-        self.calc_model.command(key_text)
-        self.main_display.setText(self.calc_model.get_display())
+        if key_text.isdigit() or key_text in "+-*/":
+            self.calc_model.command(key_text)
+            self.main_display.setText(self.calc_model.get_display())
+        elif event.key() == Qt.Key_Enter or event.key() == Qt.Key_Return:
+            self.calc_model.command("=")
+            self.main_display.setText(self.calc_model.get_display())
         super().keyPressEvent(event)
 
     def __init__(self, title=None):
@@ -82,6 +86,16 @@ class AccountCalcViev(SimpleCalcView):
                     if key == '%':
                         keys_layout.addWidget(btn, r, c, 1, 2)
 
+        def keyPressEvent(self, event):
+            key_text = event.text()
+            if key_text.isdigit() or key_text in "+-*/":
+                self.calc_model.command(key_text)
+                self.main_display.setText(self.calc_model.get_display())
+            elif event.key() == Qt.Key_Enter or event.key() == Qt.Key_Return:
+                self.calc_model.command("=")
+                self.main_display.setText(self.calc_model.get_display())
+            super().keyPressEvent(event)
+
 
 class MathCalcView(SimpleCalcView):
 
@@ -105,3 +119,14 @@ class MathCalcView(SimpleCalcView):
                     keys_layout.addWidget(btn, r, c)
                     if key == '%':
                         keys_layout.addWidget(btn, r, c, 1, 2)
+
+
+        def keyPressEvent(self, event):
+            key_text = event.text()
+            if key_text.isdigit() or key_text in "+-*/":
+                self.calc_model.command(key_text)
+                self.main_display.setText(self.calc_model.get_display())
+            elif event.key() == Qt.Key_Enter or event.key() == Qt.Key_Return:
+                self.calc_model.command("=")
+                self.main_display.setText(self.calc_model.get_display())
+            super().keyPressEvent(event)
