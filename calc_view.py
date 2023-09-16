@@ -22,7 +22,6 @@ class SimpleCalcView(QWidget):
 
     def __init__(self, title=None):
         super().__init__()
-        #self.setStyleSheet("background-color: black;")
         self.setWindowTitle(title)
 
         layout = QVBoxLayout()
@@ -30,7 +29,6 @@ class SimpleCalcView(QWidget):
 
         self.main_display = QLabel('0')
         self.main_display.setAlignment(Qt.AlignRight)
-        #self.main_display.setStyleSheet('color: rgb(255, 255, 255)')
         self.main_display.setFont(QFont("Times", 32))
         layout.addWidget(self.main_display)
 
@@ -48,7 +46,6 @@ class SimpleCalcView(QWidget):
                 key = buttons[r][c]
                 if key:
                     btn = QPushButton(text=key)
-                    #btn.setStyleSheet("background-color : orange")
                     btn.clicked.connect(self.on_button_pressed)
                     if key != '0':
                         button_grid.addWidget(btn, r, c)
@@ -81,7 +78,6 @@ class AccountCalcViev(SimpleCalcView):
                 if key:
                     btn = QPushButton(text=key)
                     btn.clicked.connect(self.on_button_pressed)
-                   # btn.setStyleSheet("background-color: orange")
                     keys_layout.addWidget(btn, r, c)
                     if key == '%':
                         keys_layout.addWidget(btn, r, c, 1, 2)
@@ -106,7 +102,6 @@ class MathCalcView(SimpleCalcView):
                 if key:
                     btn = QPushButton(text=key)
                     btn.clicked.connect(self.on_button_pressed)
-                    #btn.setStyleSheet("background-color: orange")
                     keys_layout.addWidget(btn, r, c)
                     if key == '%':
                         keys_layout.addWidget(btn, r, c, 1, 2)

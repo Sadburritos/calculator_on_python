@@ -1,21 +1,18 @@
-/* Общий фон приложения */
 QWidget {
     background-color: black;
 }
 
-/* Стили для дисплея (метки) */
 QLabel {
     color: rgb(255, 255, 255);
     font-family: "Times";
     font-size: 32px;
 }
 
-/* Стили для кнопок */
+
 QPushButton {
     background-color: orange;
 }
 
-/* Стили для радиокнопок */
 QRadioButton {
     color: rgb(255, 255, 255);
     font-family: "Times";

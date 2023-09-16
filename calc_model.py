@@ -1,4 +1,4 @@
-from math import sin, cos, tan, log, sqrt, pow
+from math import *
 class SimpleCalcModel:
     _display = '0'
 
